@@ -6,11 +6,11 @@ export const App = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
+        fontSize: 100,
+        color: '#100110',
       }}
     >
-      React homework template
+      My Phonebook :)))
     </div>
   );
 };
