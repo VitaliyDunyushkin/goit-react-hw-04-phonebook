@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
@@ -14,6 +14,21 @@ export function App() {
   ]);
 
   const [filter, setFilter] = useState('');
+
+  useEffect(() => {
+    const savedContacts = localStorage.getItem('contacts');
+    savedContacts && setContacts(JSON.parse(savedContacts));
+  }, []);
+
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
 
   // /////=======================================================================
   //   componentDidMount() {
